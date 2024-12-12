@@ -88,8 +88,8 @@ setup() {
   const error = ref(null)
 
   // API base URL (JSONPlaceholder fake API)
-  const API_URL = 'https://jsonplaceholder.typicode.com/todos'
-const OWN_API = 'http://localhost:8090/api/todos'
+  
+  const API_URL = 'http://localhost:8090/api/todos'
   // Computed property for completed todos count
   const completedTodos = computed(() => 
     todos.value.filter(todo => todo.completed).length
@@ -100,7 +100,7 @@ const OWN_API = 'http://localhost:8090/api/todos'
     isLoading.value = true
     error.value = null
     try {
-      const response = await axios.get(`${OWN_API}`)
+      const response = await axios.get(`${API_URL}`)
       todos.value = response.data
     } catch (err) {
       error.value = 'Failed to fetch todos. Please try again.'
